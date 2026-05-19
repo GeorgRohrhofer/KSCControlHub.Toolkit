@@ -3,7 +3,7 @@ services:
     image: ghcr.io/itsleeo/ksc-shop-api:dev
     restart: unless-stopped
     ports:
-      - "4000" : "4000"
+      - "4000:4000"
     env_file:
       - .env.webui
   api:
@@ -14,7 +14,7 @@ services:
     env_file:
       - .env.api
     ports:
-      - "8000" : "8000"
+      - "8000:8000"
 
   db:
     image: postgres:16
@@ -22,9 +22,9 @@ services:
     env_file:
       - .env.db
     ports:
-      - "5432" : "5432"
+      - "5432:5432"
     volumes:
-      - db_data:/var/lib/postgresql/data
+      - db_data_1:/var/lib/postgresql/data
 
-
-      
+volumes:     
+  db_data_1:
